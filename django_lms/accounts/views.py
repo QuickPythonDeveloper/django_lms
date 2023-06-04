@@ -19,6 +19,7 @@ from .forms import (
 from .models import User, Student, Parent
 from django_lms.app.models import Session, Semester
 from django_lms.course.models import Course
+from django_lms.result.models import TakenCourse
 
 
 def validate_username(request):
