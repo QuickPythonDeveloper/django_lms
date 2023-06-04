@@ -6,8 +6,7 @@ from django.conf import settings
 from django.db.models import Q
 
 from .validators import ASCIIUsernameValidator
-
-User = settings.AUTH_USER_MODEL
+from django_lms.course.models import Program
 
 # LEVEL_COURSE = "Level course"
 BACHLOAR_DEGREE = "Bachloar"
@@ -38,17 +37,17 @@ RELATION_SHIP = (
 )
 
 
-# class UserManager(models.Manager):
-#     def search(self, query=None):
-#         qs = self.get_queryset()
-#         if query is not None:
-#             or_lookup = (Q(username__icontains=query) | 
-#                          Q(first_name__icontains=query)| 
-#                          Q(last_name__icontains=query)| 
-#                          Q(email__icontains=query)
-#                         )
-#             qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
-#         return qs
+class UserManager(models.Manager):
+    def search(self, query=None):
+        qs = self.get_queryset()
+        if query is not None:
+            or_lookup = (Q(username__icontains=query) |
+                         Q(first_name__icontains=query) |
+                         Q(last_name__icontains=query) |
+                         Q(email__icontains=query)
+                         )
+            qs = qs.filter(or_lookup).distinct()  # distinct() is often necessary with Q lookups
+        return qs
 
 
 class User(AbstractUser):
@@ -122,3 +121,49 @@ class StudentManager(models.Manager):
                          )
             qs = qs.filter(or_lookup).distinct()  # distinct() is often necessary with Q lookups
         return qs
+
+
+class Student(models.Model):
+    student = models.OneToOneField(User, on_delete=models.CASCADE)
+    # id_number = models.CharField(max_length=20, unique=True, blank=True)
+    level = models.CharField(max_length=25, choices=LEVEL, null=True)
+    department = models.ForeignKey(Program, on_delete=models.CASCADE, null=True)
+
+    objects = StudentManager()
+
+    def __str__(self):
+        return self.student.get_full_name
+
+    def get_absolute_url(self):
+        return reverse('profile_single', kwargs={'id': self.id})
+
+    def delete(self, *args, **kwargs):
+        self.student.delete()
+        super().delete(*args, **kwargs)
+
+
+class Parent(models.Model):
+    """
+    Connect student with their parent, parents can
+    only view their connected students information
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    student = models.OneToOneField(Student, null=True, on_delete=models.SET_NULL)
+    first_name = models.CharField(max_length=120)
+    last_name = models.CharField(max_length=120)
+    phone = models.CharField(max_length=60, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+
+    # What is the relationship between the student and the parent (i.e. father, mother, brother, sister)
+    relation_ship = models.TextField(choices=RELATION_SHIP, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class DepartmentHead(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    department = models.ForeignKey(Program, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return "{}".format(self.user)
