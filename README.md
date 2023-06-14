@@ -69,3 +69,38 @@ Last but not least, go to this address http://127.0.0.1:8000
 
 ## 01
 ![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.36.57.png)
+
+----
+
+## 02
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.40.03.png)
+
+----
+
+## 03
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.41.42.png)
+
+----
+
+## 04
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.42.08.png)
+
+----
+
+## 05
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.45.33.png)
+
+----
+
+## 06
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.45.47.png)
+
+----
+
+## 07
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.46.16.png)
+
+----
+
+## 08
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.46.29.png)
