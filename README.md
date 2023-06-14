@@ -63,3 +63,9 @@ STRIPE_PUBLISHABLE_KEY=LEAVE_THIS_BLANK_FOR_NOW
 
 Last but not least, go to this address http://127.0.0.1:8000
 
+----
+
+# SCREENSHOTS
+
+## 01
+![image](https://github.com/QuickPythonDeveloper/django_lms/blob/main/screen%20shots/Screen%20Shot%201401-12-23%20at%2023.36.57.png)
